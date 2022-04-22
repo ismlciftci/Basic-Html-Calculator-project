@@ -1,0 +1,108 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+    button{
+        width: 50px;
+        background-color:#5b6a66;
+        border: 3px solid black;
+    }
+  </style>
+
+  <body>
+    <canvas
+      id="myCanvas"
+      width="250"
+      height="100"
+      style="border: 1px solid #000000"
+    >
+    </canvas>
+
+    <table>
+        <td colspan="3"> <input type="text" name="" id="sonuc" readonly value=""/></td>
+        
+          <td>
+            <button  id="sil">C</button>
+          </td>
+          
+        
+        
+        <div id="butonlar">
+        
+      </tr><br>
+      
+      <tr>
+        <td><button>1</button></td>
+        <td><button>2</button></td>
+        <td><button>3</button></td>
+        <td><button>/</button></td>
+      </tr><br>
+      <tr>
+        <td><button>4</button></td>
+        <td><button>5</button></td>
+        <td><button>6</button></td>
+        <td><button>-</button></td>
+      </tr><br>
+      <tr>
+        <td><button>7</button></td>
+        <td><button>8</button></td>
+        <td><button>9</button></td>
+        <td><button>+</button></td>
+      </tr><br>
+      <tr>
+        <td><button>.</button></td>
+        <td><button>0</button></td>
+        <td><button>=</button></td>
+        <td><button>*</button></td>
+    </tr>
+      
+    </div>
+    <br>
+    </table>
+
+    <script>
+      var c = document.getElementById("myCanvas");
+      var ctx = c.getContext("2d");
+      ctx.font = "30px Arial";
+      ctx.strokeText("Hesap Makinesi", 10, 50);
+    </script>
+         
+    <script>
+       
+    
+        var butonlar= document.querySelectorAll("button"),
+        butsay=butonlar.length,
+        sonuc=document.querySelector("#sonuc"),
+        i=0;
+    
+for (i=0; i <butsay; i++){
+    butonlar[i].onclick=hesapla;
+}
+function hesapla(){
+    var temp = this.innerHTML;
+    if (temp == "C"){
+    sonuc.value="";
+    temp="";}
+    else if(temp == "="){
+        try{
+            sonuc.value=eval(sonuc.value);
+        }catch(e){
+            sonuc.value=0;
+        }
+        return;
+    }
+    sonuc.value +=temp;
+}
+    
+    </script>
+  </body>
+</html>
